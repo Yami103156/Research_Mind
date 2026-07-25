@@ -110,3 +110,62 @@ section[data-testid="stSidebar"]{
     background:#0f172a;
 
 }
+
+
+/* Metric Cards */
+
+div[data-testid="metric-container"]{
+
+    background: rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:18px;
+
+    padding:18px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+    transition:.3s;
+
+}
+
+div[data-testid="metric-container"]:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.4);
+
+}
+
+/* Expander */
+
+.streamlit-expanderHeader{
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+/* Buttons */
+
+.stButton>button{
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    height:55px;
+
+    font-size:18px;
+
+}
+
+/* Text Input */
+
+.stTextInput input{
+
+    border-radius:12px;
+
+}

@@ -3,24 +3,48 @@ import streamlit as st
 
 def timeline():
 
-    st.subheader("Research Timeline")
+    st.markdown("## 🤖 Agent Workflow")
 
-    st.success("Planner Agent")
+    c1, c2, c3, c4, c5 = st.columns(5)
 
-    st.write("Generated research strategy.")
+    with c1:
 
-    st.success("Search Agent")
+        st.success(
 
-    st.write("Collected relevant websites.")
+            "🧠 Planner\n\nCompleted"
 
-    st.success("Reader Agent")
+        )
 
-    st.write("Summarized documents.")
+    with c2:
 
-    st.success("Writer Agent")
+        st.success(
 
-    st.write("Generated report.")
+            "🌐 Search\n\nCompleted"
 
-    st.success("Critic Agent")
+        )
 
-    st.write("Evaluated report quality.")
+    with c3:
+
+        st.success(
+
+            "📖 Reader\n\nCompleted"
+
+        )
+
+    with c4:
+
+        st.success(
+
+            "✍ Writer\n\nCompleted"
+
+        )
+
+    with c5:
+
+        st.success(
+
+            "🧐 Critic\n\nCompleted"
+
+        )
+
+    st.divider()
