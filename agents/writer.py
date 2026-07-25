@@ -6,70 +6,79 @@ from utils.schemas import ResearchDocument
 
 console = Console()
 
+
 def build_context(
-
-    documents: list[ResearchDocument]
-
-):
+    documents: list[ResearchDocument],
+) -> str:
+    """
+    Convert ResearchDocument objects into
+    one prompt context.
+    """
 
     context = ""
 
-    for doc in documents:
+    for document in documents:
 
         context += f"""
+====================================================
 
 Title:
-{doc.title}
+{document.title}
 
 URL:
-{doc.url}
+{document.url}
 
 Content:
-{doc.content}
+{document.content}
 
-=========================================
 """
 
     return context
 
+
 def generate_report(
-
     topic: str,
+    documents: list[ResearchDocument],
+    previous_feedback: str = "",
+) -> str:
+    """
+    Generate research report.
 
-    documents: list[ResearchDocument]
+    previous_feedback is optional.
 
-):
+    First generation:
+        previous_feedback=""
+
+    Regeneration:
+        previous_feedback=<critic feedback>
+    """
 
     console.rule("[bold cyan]WRITER AGENT[/bold cyan]")
 
-    console.print(
+    if previous_feedback.strip():
 
-        "[yellow]Generating Report...[/yellow]"
+        console.print(
+            "[yellow]Improving report using critic feedback...[/yellow]"
+        )
 
-    )
+    else:
 
-    context = build_context(
+        console.print(
+            "[yellow]Generating first report...[/yellow]"
+        )
 
-        documents
-
-    )
+    context = build_context(documents)
 
     report = writer_chain.invoke(
-
         {
-
             "topic": topic,
-
-            "documents": context
-
+            "documents": context,
+            "feedback": previous_feedback,
         }
-
     )
 
     console.print(
-
         "[green]✓ Report Generated[/green]"
-
     )
 
     return report

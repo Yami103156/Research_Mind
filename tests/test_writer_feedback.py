@@ -11,9 +11,24 @@ search_results = execute_search_plan(plan)
 
 documents = read_search_results(search_results)
 
+feedback = """
+Score: 6.9/10
+
+Weaknesses
+
+- Expand Future Trends
+
+- Add AI Regulation
+
+- Improve Executive Summary
+
+- Better Conclusion
+"""
+
 report = generate_report(
-    topic,
-    documents,
+    topic=topic,
+    documents=documents,
+    previous_feedback=feedback,
 )
 
 print()
