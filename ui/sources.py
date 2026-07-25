@@ -1,25 +1,24 @@
 import streamlit as st
 
-from pipeline import state
 
 def show_sources(documents):
 
-    st.subheader("Sources")
+    st.markdown("## 🌐 Research Sources")
 
-    for doc in documents:
+    for document in documents:
 
-        with st.expander(doc.query):
+        with st.expander(f"🔎 {document.query}"):
 
-            for result in doc.results:
+            for result in document.results:
 
                 st.markdown(
-                    f"### {result.title}"
-                )
+                    f"""
+### {result.title}
 
-                st.write(result.snippet)
+{result.snippet}
 
-                st.link_button(
-                    "Open",
-                    result.url
+🔗 {result.url}
+
+---
+"""
                 )
-    show_sources(state["documents"])

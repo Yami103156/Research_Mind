@@ -169,3 +169,53 @@ div[data-testid="metric-container"]:hover{
     border-radius:12px;
 
 }
+
+/* Tabs */
+
+button[data-baseweb="tab"]{
+
+    font-size:18px;
+
+    font-weight:600;
+
+    border-radius:12px;
+
+}
+
+/* Expanders */
+
+details{
+
+    background:#1e293b;
+
+    border-radius:15px;
+
+    padding:8px;
+
+    margin-bottom:12px;
+
+}
+
+/* Links */
+
+a{
+
+    color:#38bdf8;
+
+    text-decoration:none;
+
+}
+
+a:hover{
+
+    color:#0ea5e9;
+
+}
+
+/* Markdown Headings */
+
+h2,h3{
+
+    color:white;
+
+}

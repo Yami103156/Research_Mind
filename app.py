@@ -7,6 +7,7 @@ from ui.cards import info_cards
 from ui.timeline import timeline
 from ui.report import show_report
 from ui.sources import show_sources
+from ui.feedback import show_feedback
 from ui.downloads import download_buttons
 from ui.footer import footer
 
@@ -90,12 +91,44 @@ if st.button(
 
     timeline()
 
+    tab1, tab2, tab3 = st.tabs(
+
+    [
+
+        "📄 Report",
+
+        "🌐 Sources",
+
+        "🧐 Critic"
+
+    ]
+
+)
+
+with tab1:
+
     show_report(
+
         state["report"]
+
     )
 
+with tab2:
+
     show_sources(
+
         state["documents"]
+
+    )
+
+with tab3:
+
+    show_feedback(
+
+        state["feedback"],
+
+        state["score"]
+
     )
 
     download_buttons(
