@@ -9,19 +9,31 @@ planner_llm = llm.with_structured_output(
     ResearchPlan
 )
 
+
 planner_chain = (
+
     planner_prompt
+
     |
+
     planner_llm
+
 )
 
 
 def generate_research_plan(
-    topic: str
+    topic: str,
 ) -> ResearchPlan:
     """
-    Generate a structured research plan
-    from the user's topic.
+    Generate a structured research plan.
+
+    Parameters
+    ----------
+    topic : str
+
+    Returns
+    -------
+    ResearchPlan
     """
 
     return planner_chain.invoke(

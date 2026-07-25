@@ -3,31 +3,45 @@ from agents.planner import generate_research_plan
 
 def main():
 
-    topic = "Large Language Models"
+    topic = "Artificial Intelligence"
 
     plan = generate_research_plan(topic)
 
-    print("=" * 60)
-    print("RESEARCH GOAL")
-    print("=" * 60)
+    print()
+
+    print("=" * 80)
+
+    print("PLANNER OUTPUT")
+
+    print("=" * 80)
+
+    print()
+
+    print(plan)
+
+    print()
+
+    print("=" * 80)
+
+    print("Goal")
 
     print(plan.goal)
 
     print()
 
-    print("=" * 60)
-    print("SEARCH QUERIES")
-    print("=" * 60)
+    print("=" * 80)
 
-    for i, query in enumerate(plan.queries, start=1):
+    print("Queries")
 
-        print(f"{i}. {query}")
+    for q in plan.queries:
+
+        print("-", q)
 
     print()
 
-    print("=" * 60)
-    print("FOCUS AREAS")
-    print("=" * 60)
+    print("=" * 80)
+
+    print("Focus Areas")
 
     for area in plan.focus_areas:
 
@@ -35,4 +49,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
