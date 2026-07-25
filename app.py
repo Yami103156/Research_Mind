@@ -11,132 +11,117 @@ from ui.feedback import show_feedback
 from ui.downloads import download_buttons
 from ui.footer import footer
 
-###################################################
+############################################################
 
 st.set_page_config(
-
     page_title="ResearchMind AI",
-
     page_icon="🧠",
-
-    layout="wide"
-
+    layout="wide",
 )
 
-###################################################
+############################################################
 
-with open(
-    "assets/style.css"
-) as f:
-
+with open("assets/style.css") as f:
     st.markdown(
-
         f"<style>{f.read()}</style>",
-
-        unsafe_allow_html=True
-
+        unsafe_allow_html=True,
     )
 
-###################################################
+############################################################
 
 sidebar()
 
-###################################################
+############################################################
 
 st.markdown(
-
     """
-<div class='main-title'>
-🧠 ResearchMind AI
-</div>
+    <div class='main-title'>
+        🧠 ResearchMind AI
+    </div>
 
-<div class='subtitle'>
-Autonomous AI Research Assistant
-</div>
-""",
-
+    <div class='subtitle'>
+        Autonomous AI Research Assistant
+    </div>
+    """,
     unsafe_allow_html=True,
-
 )
 
-###################################################
+############################################################
 
 topic = st.text_input(
-
-    "",
-
-    placeholder="Example: Future of Quantum Computing"
-
+    "Research Topic",
+    placeholder="Example: Future of Quantum Computing",
+    label_visibility="collapsed",
 )
 
-###################################################
+############################################################
 
-if st.button(
+############################################################
 
-    "Generate Research Report",
+st.markdown("<br>", unsafe_allow_html=True)
 
-    use_container_width=True
+generate = st.button(
+    "🚀 Generate Research Report",
+    use_container_width=True,
+    type="primary",
+)
 
-):
+if generate:
 
-    with st.spinner(
-        "Research agents are working..."
-    ):
+    if not topic.strip():
+        st.warning("Please enter a research topic.")
+        st.stop()
 
-        state = run_research_pipeline(
-            topic
-        )
+    with st.spinner("🤖 Research Agents are working..."):
+
+        state = run_research_pipeline(topic)
+
+    ########################################################
 
     info_cards(state)
 
     timeline()
 
+    ########################################################
+
     tab1, tab2, tab3 = st.tabs(
-
-    [
-
-        "📄 Report",
-
-        "🌐 Sources",
-
-        "🧐 Critic"
-
-    ]
-
-)
-
-with tab1:
-
-    show_report(
-
-        state["report"]
-
+        [
+            "📄 Report",
+            "🌐 Sources",
+            "🧐 Critic",
+        ]
     )
 
-with tab2:
+    ########################################################
 
-    show_sources(
+    with tab1:
+        show_report(
+            state["report"]
+        )
 
-        state["documents"]
+    ########################################################
 
-    )
+    with tab2:
+        # IMPORTANT: Pass search_results instead of documents
+        show_sources(
+            state["search_results"]
+        )
 
-with tab3:
+    ########################################################
 
-    show_feedback(
+    with tab3:
+        show_feedback(
+            state["feedback"],
+            state["score"],
+        )
 
-        state["feedback"],
-
-        state["score"]
-
-    )
+    ########################################################
 
     download_buttons(
-
         state["report"],
-
-        state["feedback"]
-
+        state["feedback"],
     )
+
+############################################################
 
 footer()
