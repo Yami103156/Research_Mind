@@ -14,6 +14,6 @@ class SearchResult(BaseModel):
 
 
 class ResearchPlan(BaseModel):
-    goal: str = Field(description="Overall research goal.")
+    goal: str = Field(description="Research goal")
     queries: List[str]
     focus_areas: List[str]

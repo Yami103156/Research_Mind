@@ -1,8 +1,7 @@
-import os
-
-from dotenv import load_dotenv
-from tavily import TavilyClient
 from langchain.tools import tool
+from tavily import TavilyClient
+import os
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -13,9 +12,7 @@ client = TavilyClient(
 
 @tool
 def web_search(query: str):
-    """
-    Search the web using Tavily.
-    """
+    """Search the web using Tavily."""
 
     return client.search(
         query=query,
