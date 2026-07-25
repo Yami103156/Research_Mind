@@ -1,99 +1,77 @@
 import requests
+
 from bs4 import BeautifulSoup
+
 from langchain.tools import tool
-from urllib.parse import urlparse
-from utils.text import clean_text
-
-def is_valid_url(url: str) -> bool:
-    """
-    Validate URL.
-    """
-
-    parsed = urlparse(url)
-
-    return bool(parsed.netloc) and bool(parsed.scheme)
 
 @tool
 def scrape_url(url: str) -> str:
-
     """
-    Scrape webpage and return clean text.
+    Scrape a webpage and return cleaned text.
     """
 
-    if not is_valid_url(url):
+    headers = {
 
-        return "Invalid URL."
-
-    try:
-
-        response = requests.get(
-
-            url,
-
-            timeout=10,
-
-            headers={
-
-                "User-Agent":
-
-                "Mozilla/5.0"
-
-            }
-
+        "User-Agent":
+        (
+            "Mozilla/5.0 "
+            "(Windows NT 10.0; Win64; x64)"
         )
 
-        response.raise_for_status()
+    }
 
-        soup = BeautifulSoup(
+    response = requests.get(
 
-            response.text,
+        url,
 
-            "lxml"
+        headers=headers,
 
-        )
+        timeout=15,
 
-        for tag in soup(
+    )
 
-            [
+    response.raise_for_status()
 
-                "script",
+    soup = BeautifulSoup(
 
-                "style",
+        response.text,
 
-                "nav",
+        "html.parser",
 
-                "footer",
+    )
 
-                "header",
+    remove_tags = [
 
-                "noscript",
+        "script",
 
-                "svg",
+        "style",
 
-                "img",
+        "header",
 
-                "iframe",
+        "footer",
 
-                "aside"
+        "nav",
 
-            ]
+        "aside",
 
-        ):
+        "noscript",
 
-            tag.decompose()
+        "svg",
 
-        text = soup.get_text(
+        "form",
 
-            separator=" ",
+    ]
 
-            strip=True
+    for tag in soup(remove_tags):
 
-        )
+        tag.decompose()
 
-        text = clean_text(text)
+    text = soup.get_text(
 
-        return text[:5000]
+        separator=" ",
 
-    except Exception as e:
+        strip=True,
 
-        return f"Scraping Error : {e}"
+    )
+
+    return text[:7000]

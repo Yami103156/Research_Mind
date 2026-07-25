@@ -13,7 +13,24 @@ class SearchResult(BaseModel):
     results: List[SearchItem]
 
 
+class ResearchDocument(BaseModel):
+    """
+    Represents one fully scraped webpage.
+    """
+
+    title: str
+
+    url: str
+
+    content: str
+
+
 class ResearchPlan(BaseModel):
-    goal: str = Field(description="Research goal")
+
+    goal: str = Field(
+        description="Research Goal"
+    )
+
     queries: List[str]
+
     focus_areas: List[str]
