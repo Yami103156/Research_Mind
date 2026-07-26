@@ -1,5 +1,13 @@
-                  ![Python](https://img.shields.io/badge/Python-3.13-blue)  ![LangChain](https://img.shields.io/badge/LangChain-AI-green)![Gemini](https://img.shields.io/badge/Google-Gemini-orange)  ![Streamlit](https://img.shields.io/badge/Streamlit-App-red)  ![Render](https://img.shields.io/badge/Deploy-Render-purple)  ![License](https://img.shields.io/badge/License-MIT-yellow)
+<p align="center">
 
+<img src="https://img.shields.io/badge/Python-3.13-blue" alt="Python">
+<img src="https://img.shields.io/badge/LangChain-AI-green" alt="LangChain">
+<img src="https://img.shields.io/badge/Google-Gemini-orange" alt="Gemini">
+<img src="https://img.shields.io/badge/Streamlit-App-red" alt="Streamlit">
+<img src="https://img.shields.io/badge/Deploy-Render-purple" alt="Render">
+<img src="https://img.shields.io/badge/License-MIT-yellow" alt="License">
+
+</p>
 <div align="center">
 
 # 🧠 ResearchMind AI
