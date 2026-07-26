@@ -18,8 +18,10 @@ __pycache__/
 # Logs
 *.log
 
-# Mac
-.DS_Store
+# Testing
+.pytest_cache/
 
-# Windows
+# OS Files
+.DS_Store
 Thumbs.db
+
