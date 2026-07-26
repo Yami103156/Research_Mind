@@ -104,7 +104,7 @@ if generate:
     with tab2:
         # IMPORTANT: Pass search_results instead of documents
         show_sources(
-            state["search_results"]
+            state["documents"]
         )
 
     ########################################################

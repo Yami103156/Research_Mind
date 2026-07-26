@@ -2,41 +2,28 @@ import streamlit as st
 
 
 def show_sources(documents):
-    """
-    Display all research sources.
-    Compatible with ResearchDocument objects.
-    """
 
-    st.subheader("🔗 Sources")
+    st.subheader("🔗 Research Sources")
 
     if not documents:
-        st.info("No sources found.")
+        st.warning("No sources found.")
         return
+
+    st.success(f"Found {len(documents)} sources")
 
     for i, doc in enumerate(documents, start=1):
 
-        title = getattr(doc, "title", f"Source {i}")
-        url = getattr(doc, "url", "")
-        summary = getattr(doc, "summary", "")
-        snippet = getattr(doc, "snippet", "")
-        content = getattr(doc, "content", "")
+        with st.expander(f"📄 {i}. {doc.title}"):
 
-        with st.expander(f"{i}. {title}"):
+            st.markdown(
+                f"**🌐 URL:** [{doc.url}]({doc.url})"
+            )
 
-            if url:
-                st.markdown(f"**🌐 URL:** {url}")
+            st.markdown("---")
 
-            if summary:
-                st.markdown("**Summary**")
-                st.write(summary)
+            preview = doc.content[:1000]
 
-            elif snippet:
-                st.markdown("**Snippet**")
-                st.write(snippet)
+            st.write(preview)
 
-            elif content:
-                st.markdown("**Content Preview**")
-                st.write(content[:700] + "...")
-
-            else:
-                st.info("No preview available.")
+            if len(doc.content) > 1000:
+                st.caption("Showing first 1000 characters...")
