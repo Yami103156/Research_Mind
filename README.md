@@ -1,14 +1,4 @@
-![Python](https://img.shields.io/badge/Python-3.13-blue)
-
-![LangChain](https://img.shields.io/badge/LangChain-AI-green)
-
-![Gemini](https://img.shields.io/badge/Google-Gemini-orange)
-
-![Streamlit](https://img.shields.io/badge/Streamlit-App-red)
-
-![Render](https://img.shields.io/badge/Deploy-Render-purple)
-
-![License](https://img.shields.io/badge/License-MIT-yellow)
+![Python](https://img.shields.io/badge/Python-3.13-blue)![LangChain](https://img.shields.io/badge/LangChain-AI-green)![Gemini](https://img.shields.io/badge/Google-Gemini-orange)![Streamlit](https://img.shields.io/badge/Streamlit-App-red)![Render](https://img.shields.io/badge/Deploy-Render-purple)![License](https://img.shields.io/badge/License-MIT-yellow)
 
 <div align="center">
 
